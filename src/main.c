@@ -7,7 +7,9 @@
 #define BUFFER_SIZE         ((uint32_t)0x0100)
 #define WRITE_READ_ADDR     ((uint32_t)0x0)
 #define RAM_SIZE            ((uint32_t)(0x800000)) 
-#define NUM_INTS            (RAM_SIZE / 4) 
+/* change this to 0x200000 / 4, it will work. The actual limit should be
+ * 0x200000 but this is far from my observed limit */
+#define NUM_INTS            (0x200000 / 4 + 1)
 
 void Delay(__IO uint32_t nCount);
 
@@ -23,12 +25,12 @@ int main(void)
     FMC_Config();
     
     /* 8MB in 32-bit words */
-    for (i = 0; i < 0x200000; i++) {
+    for (i = 0; i < NUM_INTS; i++) {
         sdram[i] = i;
     }
 
     /* check SDRAM Read-back */
-    for (i = 0; i < 0x200000; i++) {
+    for (i = 0; i < NUM_INTS; i++) {
         if (sdram[i] != i) {
             bad_i = i;
             bad_sdram = sdram[i];
