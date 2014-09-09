@@ -91,12 +91,14 @@ void FMC_Config(void)
   /* GPIOG configuration */
   GPIO_PinAFConfig(GPIOG, GPIO_PinSource0 , GPIO_AF_FMC);
   GPIO_PinAFConfig(GPIOG, GPIO_PinSource1 , GPIO_AF_FMC);
+  GPIO_PinAFConfig(GPIOG, GPIO_PinSource4 , GPIO_AF_FMC);
+  GPIO_PinAFConfig(GPIOG, GPIO_PinSource5 , GPIO_AF_FMC);
   GPIO_PinAFConfig(GPIOG, GPIO_PinSource8 , GPIO_AF_FMC);
   GPIO_PinAFConfig(GPIOG, GPIO_PinSource15 , GPIO_AF_FMC);
   
 
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 |GPIO_Pin_1 |
-                                GPIO_Pin_8 | GPIO_Pin_15;
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 |GPIO_Pin_1 | GPIO_Pin_4 | GPIO_Pin_5
+                                | GPIO_Pin_8 | GPIO_Pin_15;
 
   GPIO_Init(GPIOG, &GPIO_InitStructure);
    

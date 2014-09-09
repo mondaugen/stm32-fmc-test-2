@@ -9,7 +9,7 @@
 #define RAM_SIZE            ((uint32_t)(0x800000)) 
 /* change this to 0x200000 / 4, it will work. The actual limit should be
  * 0x200000 but this is far from my observed limit */
-#define NUM_INTS            (0x200000 / 4 + 1)
+#define NUM_INTS            (0x200000)
 
 void Delay(__IO uint32_t nCount);
 
